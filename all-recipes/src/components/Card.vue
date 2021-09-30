@@ -1,9 +1,9 @@
-<template >
-    <a href="">
-        <div>
-        <img :src="strCategoryImg" alt="">
-        </div>
-    </a>
+<template>
+  <a href="">
+    <div>
+      <img :src="strCategoryImg" alt="" />
+    </div>
+  </a>
 </template>
 <script>
 export default {
@@ -14,8 +14,7 @@ export default {
     strCategoryImg: { type: String, required: true },
     strCategoryDescription: { type: String, required: true },
   },
-
 };
 </script>
-<style lang="">
-</style>
+
+<style></style>

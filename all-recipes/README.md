@@ -1,4 +1,4 @@
-# all-recipies
+# all-recipes
 
 ## Project setup
 ```
