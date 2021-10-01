@@ -1,18 +1,20 @@
 <template>
   <a href="">
-    <div>
+    <div class="tw-bg-red-200">
       <img :src="strCategoryImg" alt="" />
+      <h2 class="">{{idCategory}}</h2>
     </div>
   </a>
 </template>
+
 <script>
 export default {
   name: "Card",
   props: {
-    foodName: { type: String, required: true },
-    strCategory: { type: String, required: true },
-    strCategoryImg: { type: String, required: true },
-    strCategoryDescription: { type: String, required: true },
+    idCategory: { type: String, required: false },
+    strCategory: { type: String, required: false },
+    strCategoryImg: { type: String, required: false },
+    strCategoryDescription: { type: String, required: false },
   },
 };
 </script>

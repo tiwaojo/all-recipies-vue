@@ -1,28 +1,29 @@
 <template>
-  <div class="categories"></div>
+  <section class="categories">
+    <div v-for="item in Categories" :key="item.idCategory">
+    <Card :idCategory="item.idCategory"></Card>
+    </div>
+  </section>
 </template>
-
 
 <script>
 import axios from "axios";
+import Card from "./Card.vue";
 export default {
   name: "Categories",
+  components: { Card },
   props: {
-    msg: String,
-    // categories: { type: Array, required: true, validator: (value) => {} },
-    categoryItem: {
-      idCategory: "",
-      strCategory: "",
-      strCategoryThumb: "",
-      strCategoryDescription: "",
-    },
+    idCategory: { type: String, required: true },
+    strCategory: { type: String, required: true },
+    strCategoryDescription: { type: String, required: true },
+    strCategoryThumb: { type: String, required: true },
   },
   mounted() {
     axios
-      .gget("https://www.themealdb.com/api/json/v1/1/categories.php")
+      .get("https://www.themealdb.com/api/json/v1/1/categories.php")
       .then((result) => {
-        this.categories = result;
-        console.log(result);
+        console.log(result.data);
+        this.Categories = result.data;
       })
       .catch((err) => {
         console.error(err);
