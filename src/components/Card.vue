@@ -1,21 +1,20 @@
 <template>
-  <a href="">
-    <div class="tw-bg-red-200">
-      <img :src="strCategoryImg" alt="" />
-      <h2 class="">{{idCategory}}</h2>
-    </div>
-  </a>
+  <div class="space-y-7">
+    <img :src="strCategoryImg" alt="" />
+    <h2 class="text-gray-300">{{ strCategory }}</h2>
+    <h6 class="text-gray-300">{{ strCategoryDescription }}</h6>
+  </div>
 </template>
 
 <script>
 export default {
   name: "Card",
-  props: {
-    idCategory: { type: String, required: false },
-    strCategory: { type: String, required: false },
-    strCategoryImg: { type: String, required: false },
-    strCategoryDescription: { type: String, required: false },
-  },
+  props: [
+    "idCategory",
+    "strCategory",
+    "strCategoryImg",
+    "strCategoryDescription",
+  ],
 };
 </script>
 

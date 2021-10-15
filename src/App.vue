@@ -1,17 +1,13 @@
 <template>
-  <div class="">
-    <div class="bg-black">
-      <h1>WHere si dark mode</h1>
-    </div>
-    <div>
-      <img alt="Vue logo" src="./assets/logo.png" />
-      <Categories msg="Welcome to Your Vue.js App" />
-    </div>
-  </div>
+  <section class="dark:bg-black h-screen text-gray-50">
+    <img alt="Vue logo" src="./assets/logo.png" />
+    <div class="bg-red-500">yhiybyb</div>
+    <Categories />
+  </section>
 </template>
 
 <script>
-import Categories from "./components/categories.vue";
+import Categories from "./components/Categories.vue";
 import "./assets/tailwind.css";
 export default {
   name: "App",
@@ -27,7 +23,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  /* color: #2c3e50; */
+  /* margin-top: 60px; */
 }
 </style>
