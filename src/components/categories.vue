@@ -1,14 +1,18 @@
 <template>
-  <section class="categories dark:bg-black">
-    <div class="" v-for="(category, index) in categories" :key="index">
+  <section class="align-middle dark:bg-black">
+    <div
+      class="categories grid grid-cols-3 col-span-6"
+      v-for="(category, index) in categories"
+      :key="index"
+    >
       <!-- <h1>{{ index }} : {{ category }}</h1> -->
       <div v-for="(value, index) in category" :key="index">
         <!-- <h1>{{ index }} : {{ value }} : {{ name }}</h1> -->
         <Card
-          :idCategory="value"
-          :strCategory="value"
-          :strCategoryImg="value"
-          :strCategoryDescription="value"
+          :idCategory="value.idCategory"
+          :strCategory="value.strCategory"
+          :strCategoryThumb="value.strCategoryThumb"
+          :strCategoryDescription="value.strCategoryDescription"
         ></Card>
       </div>
     </div>
@@ -26,12 +30,6 @@ export default {
       categories: [],
     };
   },
-  // props: {
-  //   idCategory: { type: String, required: false },
-  //   strCategory: { type: String, required: false },
-  //   strCategoryImg: { type: String, required: false },
-  //   strCategoryDescription: { type: String, required: false },
-  // },
   mounted() {
     axios
       .get("https://www.themealdb.com/api/json/v1/1/categories.php")
@@ -61,5 +59,8 @@ li {
 }
 a {
   color: #42b983;
+}
+.categories {
+  grid-auto-columns: 2rem;
 }
 </style>
