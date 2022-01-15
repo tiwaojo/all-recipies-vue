@@ -1,0 +1,18 @@
+{
+  "fontName": "fabric-icons",
+  "fontFamilyName": "FabricMDL2Icons",
+  "excludeGlyphs": false,
+  "excludeThirdPartyIcons": false,
+  "chunkSubsets": false,
+  "hashFontFileName": true,
+  "glyphs": [
+    {
+      "name": "Lightbulb",
+      "unicode": "EA80"
+    },
+    {
+      "name": "LightbulbSolid",
+      "unicode": "E681"
+    }
+  ]
+}

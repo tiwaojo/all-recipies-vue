@@ -3,3 +3,5 @@
 @tailwind components;
 
 @tailwind utilities;
+
+@import url('./fabric-icons-e949fb9dbbf8bcf40624/css/fabric-icons-inline.css');
