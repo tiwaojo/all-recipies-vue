@@ -1,18 +1,18 @@
 <template>
   <section class="align-middle p-9">
     <div
-      class="categories grid lg:grid-cols-3 md:grid-cols-2 grid-cols-2 gap-x-5"
+      class="categories grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-5"
       v-for="(category, index) in categories"
       :key="index"
     >
-      <div class="my-2" v-for="(value, index) in category" :key="index">
+      <template v-for="(value, index) in category" :key="index">
         <Card
           :idCategory="value.idCategory"
           :strCategory="value.strCategory"
           :strCategoryThumb="value.strCategoryThumb"
           :strCategoryDescription="value.strCategoryDescription"
         ></Card>
-      </div>
+      </template>
     </div>
   </section>
 </template>
@@ -44,11 +44,4 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
-// h3 {
-//   margin: 40px 0 0;
-// }
-// .categories {
-//   grid-auto-columns: 2rem;
-// }
-</style>
+

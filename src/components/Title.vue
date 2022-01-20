@@ -1,10 +1,10 @@
 <template >
   <div class="flex">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <div class="">
+    <img alt="Vue logo" src="../assets/logo.png" class="h-1/4"/>
+    <div class="self-end mb-2 space-y-2">
       <h1 class="font-bold text-4xl">All Receipies</h1>
       <button
-        class="p-2 text-xl font-bold bg-gray-50 text-gray-400"
+        class="p-2 text-xl font-bold bg-gray-50 rounded-lg text-gray-400 filter drop-shadow-md hover:drop-shadow-2xl"
         @click="setTheme"
       >
         <!-- <select name="themes" id="themes" @change="setTheme">

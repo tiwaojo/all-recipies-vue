@@ -1,8 +1,8 @@
 <template>
-  <section class="dark:bg-black text-gray-50">
+  <section class="text-gray-800 dark:text-gray-50">
     <div class="container px-5 md:mx-auto md:px-0 space-y-2">
       <Title />
-      <div class="w-full h-1 dark:bg-gray-50 rounded-lg"></div>
+      <div class="w-full h-1 bg-gray-800 dark:bg-gray-50 rounded-lg"></div>
       <Categories />
     </div>
   </section>

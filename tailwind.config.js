@@ -2,11 +2,18 @@ module.exports = {
   purge: { content: ["./public/**/*.html", "./src/**/*.vue"] },
   darkMode: "class", // or 'media' or 'class'
   theme: {
-    extend: { "3xl": "0 35px 60px -15px rgba(0, 0, 0, 0.3)" },
+    extend: {
+      dropShadow: {
+        "2xl": "0 35px 35px rgba(0, 0, 0, 0.25)",
+        "3xl": "0 35px 35px rgba(0, 0, 0, 0.25)",
+      },
+    },
   },
   variants: {
     extend: {
-      boxShadow: "active",
+      extend: {
+        dropShadow: ["hover", "focus"],
+      },
     },
   },
   plugins: [],
