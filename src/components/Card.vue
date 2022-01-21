@@ -1,9 +1,9 @@
 <template>
   <div
-    class="px-2 grid content-center rounded-lg bg-gray-500 filter drop-shadow-2xl hover:drop-shadow-xl"
+    class="px-2 grid content-center rounded-lg shadow-lg hover:shadow-2xl transition-shadow ease-linear duration-300 filter drop-shadow-2xl hover:drop-shadow-xl"
   >
     <div class="justify-center">
-      <img :src="strCategoryThumb" :alt="strCategory" class="h-3/4" />
+      <img :src="strCategoryThumb" :alt="strCategory" class="h-full" />
     </div>
     <div class="text-left">
       <!-- <h1 class="text-xl text-gray-300">{{ idCategory }}</h1> -->
