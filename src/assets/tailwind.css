@@ -1,11 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&display=swap");
+
+@import url("./fabric-icons-e949fb9dbbf8bcf40624/css/fabric-icons-inline.css");
+
 @tailwind base;
 
 @tailwind components;
 
 @tailwind utilities;
 
-@import url("./fabric-icons-e949fb9dbbf8bcf40624/css/fabric-icons-inline.css");
-
 *.dark {
   background-color: black;
+}
+
+@layer base {
+  h1, h2,h3,h4,h5,h6 {
+    @apply font-semibold;
+  }
 }

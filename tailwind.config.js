@@ -5,16 +5,21 @@ module.exports = {
     extend: {
       dropShadow: {
         "2xl": "0 35px 35px rgba(0, 0, 0, 0.25)",
-        "3xl": "0 35px 35px rgba(0, 0, 0, 0.25)",
+        "3xl": "0 35px 35px rgba(104, 121, 143,0.25)",
       },
+    },
+    fontFamily: {
+      sans: ["Manrope", "sans-serif"],
     },
   },
   variants: {
     extend: {
-      extend: {
-        dropShadow: ["hover", "focus"],
-      },
+      dropShadow: ["hover", "focus"],
+      transitionProperty: ["hover", "focus"],
+      transitionDuration: ["hover", "focus"],
+      whiteSpace: ["hover", "focus"],
     },
+    transitionProperty: ["responsive", "motion-safe", "motion-reduce"],
   },
   plugins: [],
 };

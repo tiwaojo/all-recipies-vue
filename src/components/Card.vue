@@ -1,18 +1,20 @@
 <template>
-  <div
-    class="px-2 grid content-center rounded-lg shadow-lg hover:shadow-2xl transition-shadow ease-linear duration-300 filter drop-shadow-2xl hover:drop-shadow-xl"
-  >
-    <div class="justify-center">
-      <img :src="strCategoryThumb" :alt="strCategory" class="h-full" />
-    </div>
-    <div class="text-left">
+  <div class="card-item ">
+    <img
+      :src="strCategoryThumb"
+      :alt="strCategory"
+      class="transition duration-150 ease-linear hover:translate-y-8 place-self-center mx-auto bg-contain"
+    />
+    <div class=" card-description">
       <!-- <h1 class="text-xl text-gray-300">{{ idCategory }}</h1> -->
-      <h2 class="text-gray-800 dark:text-gray-300">{{ strCategory }}</h2>
-      <h6
-        class="text-gray-800 dark:text-gray-300 overflow-hidden text-ellipsis max-h-24"
+      <h2 class="text-gray-800 font-semibold text-2xl mb-2 dark:text-white">
+        {{ strCategory }}
+      </h2>
+      <p
+        class="text-gray-800 dark:text-white truncate overflow-hidden whitespace-pre-wrap group-hover: max-h-24 text-baseline"
       >
         {{ strCategoryDescription }}
-      </h6>
+      </p>
     </div>
   </div>
 </template>
@@ -29,4 +31,14 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.card-item {
+  @apply max-h-full overflow-hidden justify-self-center rounded-lg bg-gray-300 dark:bg-gray-900 transition duration-150 ease-linear filter drop-shadow-lg md:transform transform-gpu hover:drop-shadow-3xl hover:-translate-y-1 hover:scale-110;
+}
+
+.card-description{
+  @apply text-left p-2 dark:bg-gray-800 bg-gray-400 self-end;
+
+  max-height: inherit;
+}
+</style>

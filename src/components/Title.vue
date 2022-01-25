@@ -64,21 +64,14 @@ export default {
     },
     btnHoverEffect: function (e) {
       let btn;
-      if (this.isDarkMode) {
-        e.target.classList.remove("theme-change");
-        e.target.classList.add("theme-change-dark");
-        btn = document.querySelector(".theme-change-dark");
-      } else {
-        e.target.classList.remove("theme-change-dark");
-        e.target.classList.add("theme-change");
-        btn = document.querySelector(".theme-change");
-      }
+      // if (this.isDarkMode) {
+      e.target.classList.remove("theme-change");
+      e.target.classList.add("theme-change-dark");
+      btn = document.querySelector(".theme-change-dark");
 
-      let rect = e.target.getBoundingClientRect();
-      let x = e.clientX - rect.left;
-      let y = e.clientY - rect.top;
-      btn.style.setProperty("--x", x + "px");
-      btn.style.setProperty("--y", y + "px");
+      const { x, y } = btn.getBoundingClientRect();
+      btn.style.setProperty("--x", e.clientX - x);
+      btn.style.setProperty("--y", e.clientY - y);
     },
     setTheme: function () {
       // On page load or when changing themes, best to add inline in `head` to avoid FOUC
@@ -118,34 +111,18 @@ export default {
 };
 </script>
 <style>
-.theme-change:hover:before {
-  --size: 30px;
+.theme-change-dark:hover::after {
+  opacity: 0.4;
 }
-.theme-change-dark:hover:before {
-  --size: 30px;
-}
-.theme-change:before {
-  --size: 1;
+.theme-change-dark::after {
   content: "";
   position: absolute;
-  left: var(--x);
-  top: var(--y);
-  width: 40px;
-  height: 40px;
-  background: radial-gradient(circle closest-side, black, transparent);
-  transform: translate(-50%, -50%);
-  transition: width 0.2s ease, height 0.2s ease;
-}
-.theme-change-dark:before {
-  --size: 1;
-  content: "";
-  position: absolute;
-  left: var(--x);
-  top: var(--y);
-  width: 40px;
-  height: 40px;
-  background: radial-gradient(circle closest-side, white, transparent);
-  transform: translate(-50%, -50%);
-  transition: width 0.2s ease, height 0.2s ease;
+  left: calc(var(--x, 0) * 1px - 50px);
+  top: calc(var(--y, 0) * 1px - 50px);
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(#2a3749, #3984ff00 80%);
+  opacity: 0;
+  transition: opacity 0.4;
 }
 </style>

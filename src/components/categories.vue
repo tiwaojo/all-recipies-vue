@@ -1,7 +1,7 @@
 <template>
   <section class="align-middle p-9">
     <div
-      class="categories grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-5 gap-y-14"
+      class="categories grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-10 gap-y-14 justify-items-stretch"
       v-for="(category, index) in categories"
       :key="index"
     >
