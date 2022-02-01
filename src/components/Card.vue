@@ -18,7 +18,11 @@
         >
           {{ strCategoryDescription }}
         </p>
-        <button :id="`expand-modal-btn--${idCategory}`" @click="openModal" class="text-right">
+        <button
+          :id="`expand-modal-btn--${idCategory}`"
+          @click="openModal"
+          class="text-right"
+        >
           View More
         </button>
       </div>
