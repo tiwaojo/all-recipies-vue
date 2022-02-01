@@ -1,6 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
 
-@import url("./fabric-icons-e949fb9dbbf8bcf40624/css/fabric-icons-inline.css");
+@import url("./fabric-icons/css/fabric-icons-inline.css");
 
 @tailwind base;
 
@@ -8,12 +8,33 @@
 
 @tailwind utilities;
 
-*.dark {
-  background-color: black;
-}
-
 @layer base {
-  h1, h2,h3,h4,h5,h6 {
+  h1 {
+    @apply font-extrabold text-4xl;
+  }
+  h2{
+    @apply font-bold;
+  }
+  h3,h4,h5{
     @apply font-semibold;
+  }
+  p{
+    @apply font-medium text-base;
+  }
+  button{
+    @apply text-xl font-bold overflow-hidden;
+  }
+  *.dark{
+    @apply bg-black;
+  }
+
+}
+@layer components {
+  .card-item{
+    @apply bg-gray-300 dark:bg-gray-900 overflow-hidden rounded-lg transition duration-150 ease-linear filter drop-shadow-lg md:transform transform-gpu hover:drop-shadow-3xl hover:-translate-y-1 hover:scale-110;
+  }
+  .card-description {
+    @apply text-left p-2 dark:bg-gray-800 bg-gray-400 self-end ;
+    /* max-height: inherit; */
   }
 }

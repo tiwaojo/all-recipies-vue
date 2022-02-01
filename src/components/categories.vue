@@ -11,8 +11,16 @@
           :strCategory="value.strCategory"
           :strCategoryThumb="value.strCategoryThumb"
           :strCategoryDescription="value.strCategoryDescription"
+          @cardClick="updateModal($event)"
         ></Card>
       </template>
+      <Modal
+        v-if="triggerModal"
+        @closeModal="updateModal($event)"
+        :categoryId="modalItem.id"
+        :categoryTitle="modalItem.title"
+        :categoryDescription="modalItem.description"
+      />
     </div>
   </section>
 </template>
@@ -20,13 +28,16 @@
 <script>
 import axios from "axios";
 import Card from "./Card.vue";
+import Modal from "./Modal.vue";
 // import GetUpdatesCta from '@/components/page/get-updates/GetUpdatesCta';
 export default {
   name: "Categories",
-  components: { Card },
+  components: { Card, Modal },
   data() {
     return {
       categories: [],
+      triggerModal: false,
+      modalItem: {},
     };
   },
   beforeCreate() {
@@ -40,8 +51,12 @@ export default {
         console.error(err);
       });
   },
+  methods: {
+    updateModal(e) {
+      console.log("Event: ", e);
+      this.modalItem = e;
+      this.triggerModal = e.modalState;
+    },
+  },
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-

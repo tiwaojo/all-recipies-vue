@@ -1,8 +1,8 @@
 <template>
-  <section class="text-gray-800 dark:text-gray-50">
-    <div class="container px-5 md:mx-auto md:px-0 space-y-2">
+  <section class="text-gray-800 dark:text-gray-50 my-20">
+    <div class="container px-5 md:mx-auto md:px-0 space-y-2 ">
       <Title />
-      <div class="w-full h-1 bg-gray-800 dark:bg-gray-50 rounded-lg"></div>
+      <div class="w-full align-middle h-1 bg-gray-800 dark:bg-gray-50 rounded-lg"></div>
       <Categories />
     </div>
   </section>
@@ -18,12 +18,6 @@ export default {
     Categories,
     Title,
   },
-  props: {
-    // isDarkMode: {
-    //   type: Boolean,
-    //   default: true,
-    // },
-  },
 };
 </script>
 
@@ -32,7 +26,5 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* color: #2c3e50; */
-  /* margin-top: 60px; */
 }
 </style>

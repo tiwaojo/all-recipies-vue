@@ -18,6 +18,8 @@ module.exports = {
       transitionProperty: ["hover", "focus"],
       transitionDuration: ["hover", "focus"],
       whiteSpace: ["hover", "focus"],
+      maxHeight: ["hover", "focus"],
+      zIndex: ["hover", "focus"],
     },
     transitionProperty: ["responsive", "motion-safe", "motion-reduce"],
   },

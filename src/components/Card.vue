@@ -1,20 +1,27 @@
 <template>
-  <div class="card-item ">
+  <div class="card-item">
     <img
       :src="strCategoryThumb"
       :alt="strCategory"
-      class="transition duration-150 ease-linear hover:translate-y-8 place-self-center mx-auto bg-contain"
+      class="delay-200 transition duration-150 ease-linear hover:scale-95 hover:translate-y-8 place-self-center mx-auto bg-contain"
     />
-    <div class=" card-description">
-      <!-- <h1 class="text-xl text-gray-300">{{ idCategory }}</h1> -->
+    <div class="card-description">
       <h2 class="text-gray-800 font-semibold text-2xl mb-2 dark:text-white">
         {{ strCategory }}
+        <span class="italic font-thin text-base"
+          >&nbsp;&mdash;&nbsp;{{ idCategory }}</span
+        >
       </h2>
-      <p
-        class="text-gray-800 dark:text-white truncate overflow-hidden whitespace-pre-wrap group-hover: max-h-24 text-baseline"
-      >
-        {{ strCategoryDescription }}
-      </p>
+      <div class="inline">
+        <p
+          class="text-gray-800 dark:text-white truncate max-h-24 hover:max-h-full z-0 hover:z-10 text-baseline"
+        >
+          {{ strCategoryDescription }}
+        </p>
+        <button :id="`expand-modal-btn--${idCategory}`" @click="openModal" class="text-right">
+          View More
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -22,23 +29,29 @@
 <script>
 export default {
   name: "Card",
+  components: {
+    // Modal,
+  },
   props: {
     idCategory: { type: String },
     strCategory: { type: String },
     strCategoryThumb: { type: String },
     strCategoryDescription: { type: String },
   },
+  data() {
+    return {
+      cardModal: false,
+    };
+  },
+  methods: {
+    openModal() {
+      this.$emit("cardClick", {
+        modalState: true,
+        id: this.idCategory,
+        title: this.strCategory,
+        description: this.strCategoryDescription,
+      });
+    },
+  },
 };
 </script>
-
-<style>
-.card-item {
-  @apply max-h-full overflow-hidden justify-self-center rounded-lg bg-gray-300 dark:bg-gray-900 transition duration-150 ease-linear filter drop-shadow-lg md:transform transform-gpu hover:drop-shadow-3xl hover:-translate-y-1 hover:scale-110;
-}
-
-.card-description{
-  @apply text-left p-2 dark:bg-gray-800 bg-gray-400 self-end;
-
-  max-height: inherit;
-}
-</style>

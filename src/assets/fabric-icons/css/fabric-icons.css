@@ -3,7 +3,7 @@
 */
 @font-face {
   font-family: 'FabricMDL2Icons';
-  src: url('../fonts/fabric-icons-702799b6.woff') format('woff');
+  src: url('../fonts/fabric-icons.woff') format('woff');
 }
 
 .ms-Icon {
@@ -18,3 +18,6 @@
 
 .ms-Icon--Lightbulb:before { content: "\EA80"; }
 .ms-Icon--LightbulbSolid:before { content: "\E681"; }
+.ms-Icon--LightningBolt:before { content: "\E945"; }
+.ms-Icon--LightningBoltSolid:before { content: "\E45F"; }
+.ms-Icon--WordLogo16:before { content: "\F391"; }
