@@ -1,6 +1,8 @@
 <template>
   <div class="flex my-auto">
+    <router-link to="/monaco-easter-egg">
     <img alt="Vue logo" src="../assets/logo.png" class="h-auto" />
+    </router-link>
     <div class="self-end inline mb-2 space-y-2 content-center">
       <h1>All Receipies</h1>
       <div class="inline-flex space-x-4">

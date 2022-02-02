@@ -29,7 +29,6 @@
 import axios from "axios";
 import Card from "./Card.vue";
 import Modal from "./Modal.vue";
-// import GetUpdatesCta from '@/components/page/get-updates/GetUpdatesCta';
 export default {
   name: "Categories",
   components: { Card, Modal },
