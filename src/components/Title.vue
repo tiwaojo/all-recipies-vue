@@ -101,6 +101,7 @@ export default {
       ) {
         if (localStorage.theme === "light") {
           document.documentElement.classList.add("dark");
+          document.documentElement.classList.remove("light");
           localStorage.theme = "dark";
         } else {
           document.documentElement.classList.remove("dark");
@@ -180,24 +181,6 @@ export default {
 };
 </script>
 <style>
-/* .theme-change:hover::before {
-  --size: 30px;
-} */
-/* .theme-change-dark:hover::before {
-  --size: 30px;
-} */
-/* .theme-change:before {
-    --size: 1;
-    content: "";
-    position: absolute;
-    left: var(--x);
-    top: var(--y);
-    width: 40px;
-    height: 40px;
-    background: radial-gradient(circle closest-side, black, transparent);
-    transform: translate(-50%, -50%);
-    transition: width 0.2s ease, height 0.2s ease;
-  } */
 .theme-change-dark:hover::after {
   opacity: 0.4;
 }

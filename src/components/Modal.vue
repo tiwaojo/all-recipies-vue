@@ -6,7 +6,7 @@
     @click="closeModal"
   >
     <div
-      class="relative top-1/3 mx-auto p-5 w-10/12 shadow-lg rounded-md dark:bg-gray-900 bg-gray-300"
+      class="relative top-28 sm:top-1/4 md:top-1/3 my-0 mx-auto p-5 w-10/12 shadow-lg rounded-md dark:bg-gray-900 bg-gray-300"
     >
       <div class="mt-3 px-7 py-3 text-left">
         <h2 class="text-gray-800 font-semibold text-2xl mb-2 dark:text-white">
