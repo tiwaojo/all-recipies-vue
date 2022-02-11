@@ -9,7 +9,7 @@ const routes = [
     component: Home,
   },
   {
-    path: "/monaco-easter-egg",
+    path: "/codemirror-easter-egg",
     name: "easter-egg",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route

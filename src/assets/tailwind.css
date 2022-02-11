@@ -9,6 +9,9 @@
 @tailwind utilities;
 
 @layer base {
+  *{
+    @apply transition duration-150 ease-linear;
+  }
   h1 {
     @apply font-extrabold text-4xl;
   }
@@ -26,6 +29,16 @@
   }
   *.dark{
     @apply bg-black;
+  }
+  @media (prefers-color-scheme: dark) {
+    .dark {
+      @apply bg-black;
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    * {
+      @apply bg-white;
+    }
   }
 
 }

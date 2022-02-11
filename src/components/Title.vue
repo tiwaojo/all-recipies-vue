@@ -1,13 +1,25 @@
 <template>
   <div class="flex my-auto">
-    <router-link to="/monaco-easter-egg">
-    <img alt="Vue logo" src="../assets/logo.png" class="h-auto" />
+    <router-link to="/codemirror-easter-egg">
+      <img alt="Vue logo" src="../assets/logo.png" class="h-auto" />
     </router-link>
     <div class="self-end inline mb-2 space-y-2 content-center">
       <h1>All Receipies</h1>
       <div class="inline-flex space-x-4">
         <button
-          class="theme-change inline-flex space-x-3 bg-gray-700 dark:bg-gray-100 p-1 rounded-lg text-gray-400 filter drop-shadow-md hover:drop-shadow-2xl"
+          class="
+            theme-change
+            inline-flex
+            space-x-3
+            bg-gray-700
+            dark:bg-gray-100
+            p-1
+            rounded-lg
+            text-gray-400
+            filter
+            drop-shadow-md
+            hover:drop-shadow-2xl
+          "
           @click="setTheme"
           @mousemove="btnHoverEffect($event)"
         >
@@ -99,32 +111,16 @@ export default {
         (!("theme" in localStorage) &&
           window.matchMedia("(prefers-color-scheme: dark)").matches)
       ) {
-        if (localStorage.theme === "light") {
-          document.documentElement.classList.add("dark");
-          document.documentElement.classList.remove("light");
-          localStorage.theme = "dark";
-        } else {
-          document.documentElement.classList.remove("dark");
-          localStorage.theme = "light";
-        }
+        document.documentElement.classList.add("dark");
       } else {
-        if (document.documentElement.classList.contains("dark")) {
-          document.documentElement.classList.remove("dark");
-          localStorage.theme = "light";
-        } else {
-          document.documentElement.classList.add("dark");
-          localStorage.theme = "dark";
-        }
+        document.documentElement.classList.remove("dark");
       }
-
-      // Whenever the user explicitly chooses light mode
-      //   localStorage.theme = "light";
-
-      //   // Whenever the user explicitly chooses dark mode
-      //   localStorage.theme = "dark";
-
-      //   // Whenever the user explicitly chooses to respect the OS preference
-      //   localStorage.removeItem("theme");
+      if (!this.isDarkMode) {
+        document.documentElement.classList.remove("dark");
+      } else {
+        document.documentElement.classList.add("dark");
+      }
+      localStorage.setItem("theme", this.isDarkMode ? "dark" : "light");
     },
     createDocx: function () {
       const docx = new Document({
