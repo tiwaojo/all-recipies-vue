@@ -1,9 +1,11 @@
 <template>
   <div
-    id="card-modal"
+    :id="`card-modal${categoryId}`"
     aria-hidden="true"
     class="fixed inset-0 dark:bg-gray-800 bg-gray-400 dark:bg-opacity-75 bg-opacity-80 h-screen w-screen"
     @click="closeModal"
+    tabindex="-1"
+    ref="closeModalBtn"
   >
     <div
       class="relative top-28 sm:top-1/4 md:top-1/3 my-0 mx-auto p-5 w-10/12 shadow-lg rounded-md dark:bg-gray-900 bg-gray-300"
@@ -26,6 +28,7 @@
             type="button"
             class="px-2 py-2 bg-green-500 text-white text-base font-medium rounded-md w-auto shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300"
             @click="closeModal"
+
           >
             Close
           </button>
@@ -41,6 +44,10 @@ export default {
     categoryId: { type: String, required: true },
     categoryTitle: { type: String, required: true },
     categoryDescription: { type: String, required: true },
+  },
+  mounted() {
+      const closeModalBtnRef= this.$refs.closeModalBtn;
+      closeModalBtnRef.focus();
   },
   methods: {
     closeModal() {

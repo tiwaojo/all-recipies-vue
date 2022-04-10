@@ -1,9 +1,11 @@
 <template>
-  <div class="card-item">
+  <div class="card-item" tabindex="0">
     <img
       :src="strCategoryThumb"
       :alt="strCategory"
       class="delay-200 transition duration-150 ease-linear hover:scale-95 hover:translate-y-8 place-self-center mx-auto bg-contain"
+      :aria-label="strCategory"
+      :aria-describedby="`card-modal${idCategory}`"
     />
     <div class="card-description">
       <h2 class="text-gray-800 font-semibold text-2xl mb-2 dark:text-white">

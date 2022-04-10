@@ -20,18 +20,20 @@
             drop-shadow-md
             hover:drop-shadow-2xl
           "
-          @click="setTheme"
+          @click="switchTheme"
           @mousemove="btnHoverEffect($event)"
         >
           <i
             :class="[
-              isDarkMode ? 'ms-Icon--LightbulbSolid' : 'ms-Icon--Lightbulb',
+              isDarkMode === 'dark'
+                ? 'ms-Icon--LightbulbSolid'
+                : 'ms-Icon--Lightbulb',
               'ms-Icon',
             ]"
           ></i>
           Dark Mode
         </button>
-        <button @click="createDocx($event)" class="">
+        <button @click="createDocx($event)">
           <img
             src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/word_48x1.svg"
             class="w-8 h-full"
@@ -53,33 +55,51 @@ import {
   BorderStyle,
 } from "docx";
 import { saveAs } from "file-saver";
+import { nextTick } from "vue";
 export default {
   name: "Title",
   data() {
     return {
-      isDarkMode: true,
+      isDarkMode: "dark",
     };
   },
-  watch: {},
-  beforeCreate() {
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      document.documentElement.classList.add("dark");
-      document.documentElement.classList.remove("light");
-    } else {
-      document.documentElement.classList.remove("dark");
-      document.documentElement.classList.add("light");
-    }
-    localStorage.theme === "light" ? !this.isDarkMode : this.isDarkMode;
-    console.log(this.isDarkMode);
+  mounted() {
+    nextTick(() => {
+      if (
+        !("theme" in localStorage) ||
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      ) {
+        this.setTheme("dark");
+        console.log("setTheme dark: ", localStorage.theme === "dark");
+      } else {
+        this.setTheme("light");
+        console.log("setTheme light: ", localStorage.theme === "light");
+      }
+    });
   },
   methods: {
-    changeTheme: function () {
-      console.log(this.isDarkMode);
-      this.isDarkMode = !this.isDarkMode;
+    setTheme: function (theme) {
+      console.log("Theme to set to: ", theme);
+      localStorage.setItem("theme", theme);
+      this.isDarkMode = theme;
+      theme === "dark" ? this.setDarkMode() : this.setLightMode();
+    },
+    switchTheme: function () {
+      const currentTheme = localStorage.getItem("theme");
+      console.log("Theme: ", currentTheme);
+      if (currentTheme === "dark") {
+        this.setTheme("light");
+      } else {
+        this.setTheme("dark");
+      }
+    },
+    setDarkMode: function () {
+      document.documentElement.classList.remove("light");
+      document.documentElement.classList.add("dark");
+    },
+    setLightMode: function () {
+      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.add("light");
     },
     btnHoverEffect: function (e) {
       let btn;
@@ -102,25 +122,6 @@ export default {
       const { x, y } = btn.getBoundingClientRect();
       btn.style.setProperty("--x", e.clientX - x);
       btn.style.setProperty("--y", e.clientY - y);
-    },
-    setTheme: function () {
-      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-      this.changeTheme();
-      if (
-        localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-      if (!this.isDarkMode) {
-        document.documentElement.classList.remove("dark");
-      } else {
-        document.documentElement.classList.add("dark");
-      }
-      localStorage.setItem("theme", this.isDarkMode ? "dark" : "light");
     },
     createDocx: function () {
       const docx = new Document({
