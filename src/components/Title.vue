@@ -7,20 +7,8 @@
       <h1>All Receipies</h1>
       <div class="inline-flex space-x-4">
         <button
-          class="
-            theme-change
-            inline-flex
-            space-x-3
-            bg-gray-700
-            dark:bg-gray-100
-            p-1
-            rounded-lg
-            text-gray-400
-            filter
-            drop-shadow-md
-            hover:drop-shadow-2xl
-          "
-          @click="switchTheme"
+          class="theme-change inline-flex space-x-3 bg-gray-700 dark:bg-gray-100 p-1 rounded-lg text-gray-400 filter drop-shadow-md hover:drop-shadow-2xl"
+          @click="isDarkMode = !isDarkMode"
           @mousemove="btnHoverEffect($event)"
         >
           <i
@@ -55,51 +43,62 @@ import {
   BorderStyle,
 } from "docx";
 import { saveAs } from "file-saver";
-import { nextTick } from "vue";
 export default {
   name: "Title",
   data() {
     return {
-      isDarkMode: "dark",
+      isDarkMode: true,
     };
   },
+  watch: {
+    // TODO: Use watch for theme
+    isDarkMode: function (theme) {
+      localStorage.setItem("isDarkTheme", theme);
+      // console.log("isDarkTheme: ", theme);
+      this.setTheme(theme);
+    },
+  },
   mounted() {
-    nextTick(() => {
+    // this.$nextTick(() => {
+    //   console.log("something");
+    // });
+    window.addEventListener("focus", this.initTheme);
+  },
+  beforeUnmount() {
+    window.removeEventListener("focus", this.initTheme);
+  },
+  methods: {
+    initTheme: function () {
       if (
         !("theme" in localStorage) ||
         window.matchMedia("(prefers-color-scheme: dark)").matches
       ) {
-        this.setTheme("dark");
-        console.log("setTheme dark: ", localStorage.theme === "dark");
+        localStorage.setItem("isDarkTheme", true);
+        this.setTheme(true);
+        // console.log("setTheme dark: ", localStorage.isDarkTheme);
       } else {
-        this.setTheme("light");
-        console.log("setTheme light: ", localStorage.theme === "light");
+        localStorage.setItem("isDarkTheme", false);
+        this.setTheme(false);
+        // console.log("setTheme light: ", localStorage.isDarkTheme);
       }
-    });
-  },
-  methods: {
+    },
     setTheme: function (theme) {
-      console.log("Theme to set to: ", theme);
-      localStorage.setItem("theme", theme);
-      this.isDarkMode = theme;
-      theme === "dark" ? this.setDarkMode() : this.setLightMode();
+      const docEL = document.documentElement;
+      if (theme) {
+        docEL.classList.remove("light");
+        docEL.classList.add("dark");
+      } else {
+        docEL.classList.remove("dark");
+        docEL.classList.add("light");
+      }
     },
     switchTheme: function () {
       const currentTheme = localStorage.getItem("theme");
-      console.log("Theme: ", currentTheme);
       if (currentTheme === "dark") {
-        this.setTheme("light");
+        this.isDarkMode = "light";
       } else {
-        this.setTheme("dark");
+        this.isDarkMode = "dark";
       }
-    },
-    setDarkMode: function () {
-      document.documentElement.classList.remove("light");
-      document.documentElement.classList.add("dark");
-    },
-    setLightMode: function () {
-      document.documentElement.classList.remove("dark");
-      document.documentElement.classList.add("light");
     },
     btnHoverEffect: function (e) {
       let btn;

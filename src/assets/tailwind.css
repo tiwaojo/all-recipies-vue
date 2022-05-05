@@ -27,9 +27,18 @@
   button{
     @apply text-xl font-bold overflow-hidden;
   }
+  .light {
+      @apply bg-white;
+    }.dark {
+      @apply bg-black;
+    }
   @media (prefers-color-scheme: dark) {
     .dark {
       @apply bg-black;
+    }
+  } @media (prefers-color-scheme: light) {
+    .light {
+      @apply bg-white;
     }
   }
 

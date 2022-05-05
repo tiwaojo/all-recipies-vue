@@ -18,7 +18,7 @@
           >
         </h2>
         <div class="mt-2">
-          <p class="text-base text-justify">
+          <p class="text-base text-justify" :id="`card-modal${categoryId}`" :aria-label="categoryDescription">
             {{ categoryDescription }}
           </p>
         </div>

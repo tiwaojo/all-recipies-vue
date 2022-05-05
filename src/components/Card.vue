@@ -1,5 +1,5 @@
 <template>
-  <div class="card-item" tabindex="0">
+  <div class="card-item dark-bg-900" tabindex="0">
     <img
       :src="strCategoryThumb"
       :alt="strCategory"
@@ -7,7 +7,7 @@
       :aria-label="strCategory"
       :aria-describedby="`card-modal${idCategory}`"
     />
-    <div class="card-description">
+    <div class="card-description dark-bg">
       <h2 class="text-gray-800 font-semibold text-2xl mb-2 dark:text-white">
         {{ strCategory }}
         <span class="italic font-thin text-base"
